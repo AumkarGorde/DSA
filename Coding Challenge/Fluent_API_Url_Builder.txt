@@ -1,0 +1,77 @@
+public class UrlBuilder
+{
+    private StringBuilder _url;
+    private string _host;
+    private int _port;
+    private string _path;
+    Dictionary<string, string> _queryParams;
+    public UrlBuilder() 
+    {
+        _url = new StringBuilder();
+        _url.Append("https://");
+        _queryParams = new Dictionary<string, string>();
+    }
+
+    public UrlBuilder Https() 
+    {
+        return this;
+    }
+
+    public UrlBuilder Host(string host)
+    {
+        _host = host;
+        return this;
+    }
+
+    public UrlBuilder Port(int port)
+    {
+        _port = port;
+        return this;
+    }
+    public UrlBuilder Path(string path)
+    {
+        _path= path;
+        return this;
+    }
+
+    public UrlBuilder QueryParameters(Dictionary<string,string> queryParams)
+    {
+        foreach (var kvp in queryParams)
+        {
+            _queryParams.Add(kvp.Key, kvp.Value);
+        }
+        return this;
+    }
+
+    public string Build() 
+    {
+        _url.Append(_host);
+        _url.Append($":{_port}");
+        _url.Append($"/{_path}");
+        if(_queryParams.Count > 0)
+        {
+            _url.Append("?");
+            foreach (var kvp in _queryParams)
+            {
+                _url.Append($"{kvp.Key}={kvp.Value}&");
+            }
+            _url.Length--;
+        }
+        return _url.ToString();
+    }
+}
+
+============================================================
+Invocation
+
+string urlBuilder = new UrlBuilder()
+                    .Https()
+                    .Port(8080)
+                    .Path("customer/api")
+                    .QueryParameters(new Dictionary<string, string> 
+                    {
+                        {"key1","val1" },
+                        { "key2", "val2" }
+                    })
+                    .Host("www.person.com")
+                    .Build();
