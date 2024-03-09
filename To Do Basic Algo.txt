@@ -1,0 +1,48 @@
+Certainly! Here are some basic algorithmic questions:
+
+1. **Linear Search:**
+   - Implement a function to perform a linear search in an array for a given target value.
+
+2. **Binary Search:**
+   - Implement a function to perform a binary search in a sorted array for a given target value.
+
+3. **Bubble Sort:**
+   - Implement the bubble sort algorithm to sort an array of integers in non-decreasing order.
+
+4. **Selection Sort:**
+   - Implement the selection sort algorithm to sort an array of integers in non-decreasing order.
+
+5. **Insertion Sort:**
+   - Implement the insertion sort algorithm to sort an array of integers in non-decreasing order.
+
+6. **Merge Sort:**
+   - Implement the merge sort algorithm to sort an array of integers in non-decreasing order.
+
+7. **Quick Sort:**
+   - Implement the quick sort algorithm to sort an array of integers in non-decreasing order.
+
+8. **Fibonacci Sequence:**
+   - Write a function to compute the nth Fibonacci number using recursion or iteration.
+
+9. **Factorial Calculation:**
+   - Write a function to calculate the factorial of a non-negative integer using recursion or iteration.
+
+10. **Palindrome Check:**
+    - Write a function to determine whether a given string is a palindrome or not.
+
+11. **Anagram Check:**
+    - Write a function to determine whether two given strings are anagrams of each other.
+
+12. **Maximum Subarray Sum:**
+    - Write a function to find the contiguous subarray within an array that has the largest sum.
+
+13. **Reverse an Integer:**
+    - Write a function to reverse digits of an integer.
+
+14. **Power Function:**
+    - Write a function to calculate x raised to the power of y.
+
+15. **Prime Number Check:**
+    - Write a function to determine whether a given number is prime or not.
+
+These algorithmic questions cover a variety of basic algorithms and are commonly encountered in coding interviews and algorithmic problem-solving scenarios.

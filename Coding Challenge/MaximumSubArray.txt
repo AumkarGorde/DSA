@@ -1,0 +1,27 @@
+int[] nums = {2, 6, 8, -1};
+int maxSum = MaxSubArray(nums);
+Console.WriteLine("Maximum subarray sum: " + maxSum);
+
+static int MaxSubArray(int[] nums)
+{
+    int maxEndingHere = nums[0];
+    int maxSoFar = nums[0];
+
+    for (int i = 1; i < nums.Length; i++)
+    {
+        // Update maxEndingHere
+        if (nums[i] > (maxEndingHere + nums[i]))
+            maxEndingHere = nums[i];
+        else
+            maxEndingHere += nums[i];
+
+        // Update maxSoFar
+        if (maxEndingHere > maxSoFar)
+            maxSoFar = maxEndingHere;
+    }
+
+    return maxSoFar;
+}
+
+
+// Did not got

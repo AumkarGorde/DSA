@@ -1,0 +1,15 @@
+int[] a = new int[] { 10, 2, 3, 4, 10  };
+
+var sum2 = SumOfArray(a);
+
+Console.WriteLine();
+
+static int SumOfArray(int[] a)
+{
+    int sum = 0;
+   for (int i = 0; i < a.Length; i++)
+    {
+        sum += a[i];
+    }
+   return sum;
+}

@@ -1,0 +1,43 @@
+int[] a = new int[] { 1, 1, 3, 4, 4};
+
+FinDupeBruteForce(a);
+FinddupeHashSet(a);
+FinddupeSort(a);
+
+Console.WriteLine();
+
+static void FinDupeBruteForce(int[] a)
+{
+    for (int i = 0; i < a.Length; i++)
+    {
+        for(int j = i + 1;  j < a.Length; j++)
+        {
+            if (a[i] == a[j])
+                Console.WriteLine($"dupe found bruteforce at index : {j}");
+        }
+    }
+}
+
+static void FinddupeHashSet(int[] a)
+{
+    var hs = new HashSet<int>();
+    for (int i = 0; i < a.Length; i++)
+    {
+        if (!hs.Add(i))
+        {
+            Console.WriteLine($"dupe found hashset at index : {i}");
+        }
+    }
+}
+
+static void FinddupeSort(int[] a)
+{
+    Array.Sort(a);
+    for (int i = 0;i < a.Length - 1;i++)
+    {
+        if (a[i] == a[i + 1])
+        {
+            Console.WriteLine($"dupes found array at index : {i+1}");
+        }
+    }
+}

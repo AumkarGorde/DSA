@@ -1,0 +1,31 @@
+int number = 529;
+int num = findBinaryDiff(number);
+
+Console.WriteLine();
+
+static int findBinaryDiff(int number)
+{
+    string num = Convert.ToString(number, 2);
+    char[] arr = num.ToCharArray();
+
+    int currentGap = 0;
+    int maxGap = 0;
+    bool counting = false;
+
+    foreach (char c in arr)
+    {
+        if (c == '1')
+        {
+            if (currentGap > maxGap)
+                maxGap = currentGap;
+            currentGap = 0;
+            counting = true;
+        }
+        else
+        {
+            if (counting)
+                currentGap++;
+        }
+    }
+    return maxGap;
+}

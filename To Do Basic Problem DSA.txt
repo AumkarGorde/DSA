@@ -1,0 +1,59 @@
+Sure, here's the combined list of basic coding problems for each topic:
+
+**Array:**
+1. Find the maximum element in an array.
+2. Reverse an array.
+3. Check if an array is sorted.
+4. Find the sum of all elements in the array.
+5. Remove duplicates from a sorted array.
+
+**String:**
+1. Reverse a string.
+2. Check if a string is a palindrome.
+3. Count the occurrences of a specific character in a string.
+4. Concatenate two strings.
+5. Check if two strings are anagrams.
+
+**Linked List:**
+1. Traverse a linked list and print its elements.
+2. Find the length of a linked list.
+3. Reverse a linked list.
+4. Delete a node from a linked list given its value.
+5. Detect a cycle in a linked list.
+
+**Stack:**
+1. Implement a stack using an array.
+2. Check if parentheses in a string are balanced using a stack.
+3. Evaluate a postfix expression using a stack.
+4. Implement a stack that supports push, pop, top, and getMin operations with constant time complexity.
+5. Implement a stack using two queues.
+
+**Queue:**
+1. Implement a queue using an array.
+2. Implement a circular queue.
+3. Design and implement a queue using stacks.
+4. Implement a priority queue.
+5. Reverse the first K elements of a queue.
+
+**Hash Table:**
+1. Implement a hash table.
+2. Find the first non-repeated character in a string using a hash table.
+3. Check if two arrays are equal or not using a hash table.
+4. Group anagrams from a list of strings using a hash table.
+5. Implement a hash set.
+
+**Trees:**
+1. Traverse a binary tree in preorder, inorder, and postorder.
+2. Find the height of a binary tree.
+3. Find the diameter of a binary tree.
+4. Check if a binary tree is a binary search tree (BST).
+5. Mirror a binary tree.
+
+**Graph:**
+1. Implement a graph using an adjacency matrix or adjacency list.
+2. Perform depth-first search (DFS) traversal on a graph.
+3. Perform breadth-first search (BFS) traversal on a graph.
+4. Check if a graph is cyclic.
+5. Find the shortest path between two nodes in a graph using BFS or Dijkstra's algorithm.
+
+These problems cover a broad range of basic data structure and algorithm concepts and are commonly used in coding interviews and algorithmic competitions.

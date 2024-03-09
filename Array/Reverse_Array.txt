@@ -1,0 +1,22 @@
+int[] a = new int[] { 1, 2, 3, 4, 5  };
+
+ReveseArray(a);
+
+Console.WriteLine();
+
+static void ReveseArray(int[] a)
+{
+    int left = 0;
+    int right = a.Length - 1;
+    while (left < right)
+    {
+        int temp = a[left];
+        a[left] = a[right];
+        a[right] = temp;
+        left++;
+        right--;
+    }
+}
+
+===============================================
+This is inplace reversal

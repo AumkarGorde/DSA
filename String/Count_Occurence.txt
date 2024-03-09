@@ -1,0 +1,24 @@
+string s = "omkarr";
+CountOccurence(s);
+Console.WriteLine();
+
+static void CountOccurence(string s)
+{
+    var dict = new Dictionary<char, int>();
+    for (int i = 0; i < s.Length; i++)
+    {
+        if (dict.ContainsKey(s[i]))
+        {
+            dict[s[i]] += 1;
+        }
+        else
+        {
+            dict.Add(s[i], 1);
+        }
+    }
+
+    foreach (var d in dict)
+    {
+        Console.WriteLine($"Character '{d.Key}' occurs {d.Value} times.");
+    }
+}

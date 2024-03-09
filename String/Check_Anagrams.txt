@@ -1,0 +1,37 @@
+string a1 = "listen";
+string a2 = "silent";
+
+bool b = CheckIfAnagrams(a1, a2);
+Console.WriteLine();
+static bool CheckIfAnagrams(string a1, string a2)
+{
+    if (a1.Length != a2.Length)
+        return false;
+
+    Dictionary<char,int> charCount = new Dictionary<char,int>();
+
+    for (int i = 0; i < a1.Length; i++)
+    {
+        if (charCount.ContainsKey(a1[i]))
+            charCount[a1[i]]++;
+        else
+            charCount.Add(a1[i], 1);
+    }
+
+    for (int i = 0;i < a2.Length; i++)
+    {
+        if (charCount.ContainsKey(a2[i]))
+            charCount[a2[i]]--;
+        else
+            return false;
+    }
+
+    foreach(var count in charCount.Values)
+    {
+        if(count != 0)
+            return false;
+    }
+
+    return true;
+}
+

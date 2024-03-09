@@ -1,0 +1,47 @@
+int number = 5;
+int ans = CalculateFactorial(number);
+int ans1 = FactorialByRecursion(number);
+Console.WriteLine($"No Recurion : {ans}");
+Console.WriteLine($"With Recursion : {ans1}");
+
+static int CalculateFactorial(int number)
+{
+    int result = 1;
+    if (number < 0)
+    {
+        throw new ArgumentException("Factorial is not defined for negative numbers.");
+    }
+    else if (number == 0 || number == 1)
+    {
+        return 1; // Base case: 0! and 1! = 1
+    }
+    else
+    {
+        for (int i = number; i > 0; i--)
+        {
+            result = result * i;
+        }
+    }
+    return result;
+}
+
+static int FactorialByRecursion(int number)
+{
+    if (number < 0)
+    {
+        throw new ArgumentException("Factorial is not defined for negative numbers.");
+    }
+    else if (number == 0 || number == 1)
+    {
+        return 1; // Base case: 0! and 1! = 1
+    }
+    else
+    {
+        return number * FactorialByRecursion(number - 1);
+    }
+}
+
+/*
+Recursion is another approach to solve problems, and in this case, it simplifies the factorial calculation. 
+However, it's important to note that excessive recursion can lead to stack overflow errors, especially for large inputs.
+ */

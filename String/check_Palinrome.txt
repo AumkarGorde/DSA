@@ -1,0 +1,19 @@
+string a = "nayan";
+bool b = checkPalinrome(a);
+Console.WriteLine();
+
+static bool checkPalinrome(string a)
+{
+    int left = 0;
+    int right = a.Length-1;
+    while (left < right)
+    {
+        if (a[left] != a[right]) 
+        {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}

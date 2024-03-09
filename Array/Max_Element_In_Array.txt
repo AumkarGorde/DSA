@@ -1,0 +1,22 @@
+int[] a = new int[] { 99, 1, 256, 3, 6 };
+
+var maxel = a.Max();
+var max = MaxElement(a);
+
+Console.WriteLine();
+
+static int MaxElement(int[] a)
+{
+    int max = a[0];
+    for (int i = 1; i < a.Length; i++)
+    {
+        if (max < a[i])
+        {
+            max = a[i];
+        }
+    }
+    return max;
+}
+
+=========================================================
+more better way can be a divide and conquer

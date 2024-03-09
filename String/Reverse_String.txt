@@ -1,0 +1,21 @@
+string a = "omkar";
+var rev = a.Reverse();
+stringReverse(a);
+Console.WriteLine();
+
+static void stringReverse(string a)
+{
+    var ca = a.ToCharArray();
+    int left = 0;
+    int right = ca.Length - 1;
+    while (left < right)
+    {
+        char temp = ca[left];
+        ca[left] = ca[right];
+        ca[right] = temp;
+
+        left++;
+        right--;
+    }
+    Console.WriteLine(new string(ca));
+}

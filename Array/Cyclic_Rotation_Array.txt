@@ -1,0 +1,24 @@
+/*Cyclic rotation*/
+int[] A = new int[] { 1, 2, 3, 4};
+int K = 1;
+sol(A, K);
+Console.WriteLine(string.Join(" ",A));
+static void sol(int[]A, int K)
+{
+    int length = A.Length;
+    if(length > 0)
+    {
+        K = K % length;
+
+        for (int i = 0; i < K; i++)
+        {
+            int temp = A[length - 1];
+            for (int j = length - 1; j > 0; j--)
+            {
+                A[j] = A[j - 1];
+            }
+            A[0] = temp;
+        }
+    }
+        
+}
