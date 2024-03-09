@@ -1,0 +1,168 @@
+
+
+using LinqRevise;
+
+/* 1. Filtering : Given an array of integers, filter out only the even numbers.*/
+int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+var evenNumbers = numbers.Where(x => x % 2 == 0);
+Console.WriteLine($"Even Numbers : {string.Join(" ", evenNumbers)}");
+
+/* Projection : Given an array of strings, convert each string to uppercase (Project and Transform each elemnt)*/
+string[] caseLower = { "hello", "world", "dotnet", "linq" };
+var upperCase = caseLower.Select(x => x.ToUpper());
+Console.WriteLine($"Upper case   : {string.Join(" ", upperCase)}");
+
+/* Sorting: Given an array of strings, sort them alphabetically. */
+string[] wordunsorted = { "hello", "world", "dotnet", "linq" };
+var sortedwords = wordunsorted.OrderBy(x => x);
+Console.WriteLine($"Soterd words : {string.Join(" ", sortedwords)}");
+
+/* Aggregation: Given an array of integers, calculate the sum of all elements. */
+int[] addnumbers = { 1, 2, 3, 4, 5 };
+var sum = addnumbers.Sum();
+Console.WriteLine($"Sum is       : {sum}");
+
+/* Counting: Given an array of strings, count the number of elements. */
+string[] wordsCount = { "hello", "world", "dotnet", "linq" };
+int count = wordsCount.Count();
+Console.WriteLine($"Count is     : {count}");
+
+/* Filtering with Index: Given an array of strings, filter out elements whose length is less than 5. */
+string[] wordsLen = { "hello", "world", "dotnet", "linq" };
+var less5 = wordsCount.Where(x => x.Length < 5);
+Console.WriteLine($"strlenless 5 : {string.Join(" ", less5)}");
+
+/* Filter out the words whose length is greater than the index at which they appear in the array */
+string[] wordsIndex = { "apple", "banana", "orange", "kiwi", "gra" };
+var wordsIndexCompare = wordsIndex.Where((w, index) => w.Length <= index);
+Console.WriteLine($"compare with it index : {string.Join(" ", wordsIndexCompare)}");
+
+/* Combining Two Arrays: Given two arrays of integers, merge them and remove duplicates. */
+int[] arr1 = { 1, 2, 3 };
+int[] arr2 = { 3, 4, 5 };
+var concate = arr1.Concat(arr2).Distinct();
+Console.WriteLine($"concate remove dupes : {string.Join(" ", concate)}");
+
+/* Grouping: Given an array of strings, group them by their lengths. */
+string[] wordsGrp = { "hello", "world", "dotnet", "linq" };
+var groupedByLength = wordsGrp.GroupBy(w => w.Length);
+Console.WriteLine($"group by : {string.Join(" ", string.Join(" ", groupedByLength.ToArray()[0]))} :: {string.Join(" ", groupedByLength.ToArray()[1])} :: {string.Join(" ", groupedByLength.ToArray()[2])}");
+
+/* Joining: Given two arrays of strings, join them into a single string with comma-separated values. */
+string[] arr1str = { "apple", "banana", "orange" };
+string[] arr2str = { "cat", "dog", "bird" };
+Console.WriteLine($"Join with comma : {string.Join(", ", arr1str.Concat(arr2str))}");
+
+/* Any/All Predicate: Given an array of integers, check if any element is greater than 10. */
+int[] numbersCHck = { 5, 8, 12, 3 };
+bool check = numbersCHck.Any(x => x > 10); // check if elements are greater than 10
+bool check2 = numbersCHck.All(x => x > 10); // check if all elements are greater than 0
+Console.WriteLine("*****Revise above**************");
+
+/* Filtering and Projection: Given a list of Person objects, filter out adults (age >= 18) and project their names. */
+List<Person> people = new List<Person>
+{
+    new Person { Name = "Alice", Age = 25 },
+    new Person { Name = "Bob", Age = 17 },
+    new Person { Name = "Charlie", Age = 30 }
+};
+var adults = people
+            .Where(x => x.Age > 18)
+            .Select(x => x.Name);
+Console.WriteLine($"Adults : {string.Join(", ", adults)}");
+
+/* Sorting and Pagination: Given a list of products, sort them by price in descending order and take the top 5 */
+List<Product> products = new List<Product>
+{
+    new Product { Name = "Product1", Price = 10.99m },
+    new Product { Name = "Product2", Price = 5.99m },
+    new Product { Name = "Product3", Price = 14.99m },
+    new Product { Name = "Product4", Price = 3.99m },
+    new Product { Name = "Product5", Price = 10.99m },
+    new Product { Name = "Product6", Price = 98.99m },
+};
+var top5Prduct = products.OrderByDescending(x => x.Price).Take(3);
+Console.WriteLine($"Top Five Product : {string.Join(" ", top5Prduct)}");
+
+/* Grouping and Aggregation: Given a list of transactions, group them by year and calculate the total amount for each year. */
+List<Transaction> transactions = new List<Transaction>
+{
+    new Transaction { Date = new DateTime(2023, 1, 15), Amount = 100 },
+    new Transaction { Date = new DateTime(2023, 2, 20), Amount = 150 },
+    new Transaction { Date = new DateTime(2022, 3, 20), Amount = 350 },
+    new Transaction { Date = new DateTime(2022, 8, 20), Amount = 550 },
+    new Transaction { Date = new DateTime(2023, 3, 20), Amount = 850 },
+};
+var totalAmtPerYeardict = transactions
+                      .GroupBy(x => x.Date.Year)
+                      .ToDictionary(g=>g.Key, g=> g.Sum(x=>x.Amount)); // here g refers to each group
+
+var totalAmtPerYear = transactions
+                      .GroupBy(x => x.Date.Year)
+                      .Select(g => new { Year = g.Key, TotalAmount = g.Sum(x => x.Amount) });// here g refers to each group
+Console.WriteLine("Group by : See by breakpont");
+
+/* Joining with Lookup: Given two lists of products and categories, create a lookup to find products by category.*/
+List<Category> categories = new List<Category>
+{
+    new Category { Id = 1, Name = "Electronics" },
+    new Category { Id = 2, Name = "Clothing" },
+    new Category { Id = 3, Name = "Food"}
+};
+List<ProductCategory> productCat = new List<ProductCategory>
+{
+    new ProductCategory { Name = "Laptop", CategoryId = 1 },
+    new ProductCategory { Name = "T-Shirt", CategoryId = 2 },
+    new ProductCategory { Name = "Vada Pav", CategoryId = 3 },
+    new ProductCategory { Name = "Jeans", CategoryId = 2 },
+};
+var productsByCategory = productCat.ToLookup(p => p.CategoryId); // similar to group by but some difference in return type
+Console.WriteLine();
+
+/* Conditional Projection: Given a list of integers, project them as "Even" or "Odd" */
+List<int> numbersCP = new List<int> { 1, 2, 3, 4, 5 };
+var conditionalProjection = numbersCP.Select(n => new { Number = n, Type = n % 2 == 0 ? "Even" : "Odd" });
+Console.WriteLine();
+
+/* Aggregation with Initial Value: Given a list of integers, calculate the product of all elements. */
+List<int> numbersProduct = new List<int> { 1, 2, 3, 4, 5 };
+var productAg = numbersProduct.Aggregate(1, (acc, n) => acc * n);
+Console.WriteLine($"Product is : {productAg}");
+
+/* Zip Operation: Given two lists of integers, sum their corresponding elements. */
+List<int> list1 = new List<int> { 1, 2, 3 };
+List<int> list2 = new List<int> { 4, 5, 6 };
+
+var zipped = list1.Zip(list2, (x, y) => x + y); // combine 2 elements from two sequences (in this case, two lists) pairwise
+Console.WriteLine();
+
+/* Partitioning: Given a list of integers, partition them into two groups based on whether they are even or odd.*/
+List<int> numbersE = new List<int> { 1, 2, 3, 4, 5 };
+var parti = numbersE.GroupBy(x => x % 2 == 0 ? "Even" : "Odd");
+Console.WriteLine();
+
+/* Finding Max / Min Element: Given a list of products, find the product with the highest price. */
+var highestPrice = products.OrderByDescending(x=>x.Price).First(); // first will through exception if no element found, first or default return default value of type if no element found
+Console.WriteLine();
+
+/* Finding Common Elements: Given two lists of integers, find the common elements between them */
+List<int> list3 = new List<int> { 1, 2, 3, 4, 5 };
+List<int> list4 = new List<int> { 4, 5, 6, 7, 8 };
+
+var commonElements = list3.Intersect(list4);
+Console.WriteLine();
+
+List<string> words = new List<string> { "listen", "silent", "hello", "world", "act", "cat" };
+
+var anagrams = words.GroupBy(w => string.Concat(w.OrderBy(c => c)))
+                   .Where(g => g.Count() > 1)
+                   .Select(g => g.ToList());
+
+Console.WriteLine();
+
+/* Finding Common Elements: Given two lists of integers, find the common elements between them.*/
+List<int> list5 = new List<int> { 1, 2, 3, 4, 5 };
+List<int> list6 = new List<int> { 4, 5, 6, 7, 8 };
+
+var commonElements1 = list5.Intersect(list6);
+Console.WriteLine();
